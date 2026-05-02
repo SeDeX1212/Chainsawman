@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+  }
+  
+  #terminal {
+    padding: 15px;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  #output {
+    white-space: pre-wrap;
+    overflow-y: auto;
+    height: 90vh;
+  }
+  
+  #input-line {
+    display: flex;
+    align-items: center;
+  }
+  
+  #commandInput {
+    background: black;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+  }
+
+  /* BOOT SCREEN */
+#bootScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#bootText {
+    font-size: 22px;
+    line-height: 26px;
+    white-space: pre;
+    margin: 0;
+  
+    font-family: Consolas, "Lucida Console", "Courier New", monospace;
+  }
+
+#progressBox {
+  margin-top: 30px;
+  width: 500px;
+  height: 30px;
+  border: 2px solid white;
+  position: relative;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: white;
+}
+
+#bootStatus {
+  margin-top: 15px;
+  font-size: 18px;
+}

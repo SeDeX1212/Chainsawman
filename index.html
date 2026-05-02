@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>RPG Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA DE BOOT -->
+  <div id="bootScreen">
+    <pre id="bootText"></pre>
+    <div id="progressBox">
+      <div id="progressBar"></div>
+    </div>
+    <p id="bootStatus">Carregando sistema...</p>
+  </div>
+
+  <!-- TERMINAL -->
+  <div id="terminal" style="display:none;">
+    <div id="output"></div>
+
+    <div id="input-line">
+      <span>C:\></span>
+      <input type="text" id="commandInput" autofocus autocomplete="off">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
