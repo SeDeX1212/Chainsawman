@@ -38,7 +38,7 @@ function startBoot() {
   let progress = 0;
 
   const interval = setInterval(() => {
-    progress += 2;
+    progress += 4;
     progressBar.style.width = progress + "%";
 
     if (progress < 30) bootStatus.innerText = "Verificando memória...";
