@@ -10,6 +10,15 @@ const bootText = document.getElementById("bootText");
 const progressBar = document.getElementById("progressBar");
 const bootStatus = document.getElementById("bootStatus");
 
+const entityScreen = document.getElementById("entityScreen");
+const entityImage = document.getElementById("entityImage");
+const entityName = document.getElementById("entityName");
+const entityDanger = document.getElementById("entityDanger");
+const entityContent = document.getElementById("entityContent");
+
+const warningScreen = document.getElementById("warningScreen");
+const warningText = document.getElementById("warningText");
+
 const ouroborosASCII = `                                    
             
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣄⣀⠀⠀⠀⠀⠀⠀⠀
@@ -51,7 +60,7 @@ function startBoot() {
 
       setTimeout(() => {
         bootScreen.style.display = "none";
-        terminal.style.display = "block";
+        terminal.style.display = "flex";
         input.focus();
 
         loadDatabase().then(showWelcome);
@@ -63,8 +72,11 @@ function startBoot() {
 /* ===== TERMINAL NORMAL ===== */
 
 function print(text) {
+  
   output.innerText += text + "\n";
-  output.scrollTop = output.scrollHeight;
+
+  output.scrollTop =
+      output.scrollHeight;
 }
 
 async function loadDatabase() {
@@ -161,13 +173,14 @@ function processCommand(cmd) {
   }
 
   if (command === "type") {
+
     if (!loggedUser) {
       print("Acesso negado. Faça LOGIN primeiro.");
       return;
     }
 
     if (args.length < 2) {
-      print("Uso: TYPE arquivo.txt");
+      print("Uso: TYPE arquivo");
       return;
     }
 
@@ -179,13 +192,28 @@ function processCommand(cmd) {
       return;
     }
 
-    print("");
-    print(file.content);
-    print("");
+    if (file.type === "text") {
+
+      print("");
+      print(file.content);
+      print("");
+
+      return;
+    }
+
+    if (file.type === "entity") {
+
+      openEntity(file);
+
+      return;
+    }
+
+    print("Tipo de arquivo inválido.");
     return;
   }
 
   print("Comando não reconhecido. Digite HELP.");
+
 }
 
 input.addEventListener("keydown", (e) => {
@@ -198,4 +226,90 @@ input.addEventListener("keydown", (e) => {
 });
 
 /* INICIA O BOOT AO ABRIR O SITE */
+
+function openEntity(file) {
+
+  terminal.style.display = "none";
+
+  entityScreen.style.display = "block";
+
+  entityImage.src = file.image;
+
+  entityName.textContent = file.title;
+
+  entityDanger.textContent =
+    `NÍVEL DE PERIGO ${file.danger}/5 - PRIMORDIAL`;
+
+  entityContent.textContent =
+    file.content;
+}
+
+function closeEntity() {
+
+  entityScreen.style.display = "none";
+
+  terminal.style.display = "block";
+
+  input.focus();
+}
+
+function shakeScreen() {
+
+  document.body.classList.add("screenShake");
+
+  setTimeout(() => {
+    document.body.classList.remove("screenShake");
+  }, 100);
+}
+
+async function darknessEasterEgg() {
+
+  entityScreen.style.display = "none";
+
+  warningScreen.style.display = "flex";
+
+  warningText.textContent = "";
+
+  const phrase =
+    "A ESCURIDÃO TE PERSEGUE";
+
+  for (let i = 0; i < phrase.length; i++) {
+
+    warningText.textContent += phrase[i];
+
+    shakeScreen();
+
+    await new Promise(resolve =>
+      setTimeout(resolve, 80)
+    );
+  }
+
+  await new Promise(resolve =>
+    setTimeout(resolve, 2500)
+  );
+
+  warningScreen.style.display = "none";
+
+  entityScreen.style.display = "block";
+}
+
+entityImage.addEventListener(
+  "click",
+  darknessEasterEgg
+);
+
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "Escape") {
+
+    if (entityScreen.style.display === "block") {
+
+      closeEntity();
+
+    }
+
+  }
+
+});
+
 startBoot();

@@ -1,31 +1,122 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>RPG Console</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUROBOROS TERMINAL</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- TELA DE BOOT -->
-  <div id="bootScreen">
-    <pre id="bootText"></pre>
-    <div id="progressBox">
-      <div id="progressBar"></div>
+    <!-- ========================= -->
+    <!-- BOOT SCREEN -->
+    <!-- ========================= -->
+
+    <div id="bootScreen">
+
+        <pre id="bootText">
+
+        </pre>
+
+        <div id="progressBox">
+            <div id="progressBar"></div>
+        </div>
+
+        <div id="bootStatus">
+            INITIALIZING OUROBOROS SYSTEM...
+        </div>
+
     </div>
-    <p id="bootStatus">Carregando sistema...</p>
-  </div>
 
-  <!-- TERMINAL -->
-  <div id="terminal" style="display:none;">
-    <div id="output"></div>
+    <!-- ========================= -->
+    <!-- TERMINAL -->
+    <!-- ========================= -->
 
-    <div id="input-line">
-      <span>C:\></span>
-      <input type="text" id="commandInput" autofocus autocomplete="off">
+    <div id="terminal" style="display:none;">
+
+        <div id="output"></div>
+
+        <div id="inputLine">
+
+            <span>C:\></span>
+
+            <input
+                type="text"
+                id="commandInput"
+                autocomplete="off"
+                autofocus
+            >
+
+        </div>
+
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- ========================= -->
+    <!-- VIDEO PLAYER -->
+    <!-- ========================= -->
+
+    <div id="videoScreen">
+
+        <video
+            id="secretVideo"
+            autoplay
+            loop
+            playsinline
+        ></video>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- ENTITY DOSSIER -->
+    <!-- ========================= -->
+
+    <div id="entityScreen">
+
+        <img
+            id="entityImage"
+            src="images/escuridao.png"
+            alt="Entidade"
+        >
+
+        <h1 id="entityName">
+            ESCURIDÃO
+        </h1>
+
+        <div id="entityDanger">
+            NÍVEL DE PERIGO V — PRIMORDIAL
+        </div>
+
+        <div id="entityContent">
+        </div>
+
+        <div id="entityHint">
+            Pressione ESC para retornar ao terminal
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- EASTER EGG -->
+    <!-- ========================= -->
+
+    <div id="warningScreen">
+
+        <div id="warningText"></div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- CRT OVERLAY -->
+    <!-- ========================= -->
+
+    <div id="crtOverlay"></div>
+
+    <!-- ========================= -->
+    <!-- SCRIPT -->
+    <!-- ========================= -->
+
+    <script src="script.js"></script>
+
 </body>
 </html>
