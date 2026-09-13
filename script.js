@@ -238,7 +238,7 @@ function openEntity(file) {
   entityName.textContent = file.title;
 
   entityDanger.textContent =
-    `NÍVEL DE PERIGO ${file.danger}/5 - PRIMORDIAL`;
+    `${file.danger}`;
 
   entityContent.textContent =
     file.content;
